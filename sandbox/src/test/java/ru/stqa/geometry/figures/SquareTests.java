@@ -23,10 +23,10 @@ public class SquareTests {
     @Test
     void cannotCreateSquareWithNegativeSide() {
         try {
-            new Square(-5.0);
+            new Square(5.0);
             Assertions.fail();
         } catch (IllegalArgumentException exception) {
-            //OK
+            System.out.println("errorishe");
         }
     }
 }

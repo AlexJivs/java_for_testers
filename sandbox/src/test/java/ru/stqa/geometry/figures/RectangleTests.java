@@ -11,7 +11,7 @@ public class RectangleTests {
             new Rectangle(-5.0, 3.0);
             Assertions.fail();
         } catch (IllegalArgumentException exception) {
-            //OK
+            System.out.println("ERRORISHE");
         }
     }
 }

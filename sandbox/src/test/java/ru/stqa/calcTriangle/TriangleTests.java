@@ -7,12 +7,14 @@ public class TriangleTests {
 
     @Test
     void canCalculateArea() {
-        Assertions.assertEquals(3.897114317029974, AriaTriangle.areaTriangle(3.0, 3.0, 3.0));
+        var s = new AriaTriangle(3.0, 3.0, 3.0);
+        double result = s.areaTriangle();
+        Assertions.assertEquals(3.897114317029974, result);
     }
 
     @Test
     void canCalculatePerimeter() {
-        Assertions.assertEquals(12.0, PerimeterTriangle.perimeterTriangle(3.0, 4.0, 5.0));
+        Assertions.assertEquals(12.0, new PerimeterTriangle(3.0, 4.0, 5.0).perimeterTriangle());
 
     }
 }
