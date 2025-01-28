@@ -11,7 +11,7 @@ public class PerimeterTriangle {
         this.side3 = side3;
     }
 
-    public static void printPerimeterTriangle(PerimeterTriangle s)  { //double side1, double side2, double side3)
+    public static void printPerimeterTriangle(PerimeterTriangle s)  {
 
         System.out.println("периметр треугольника со сторонами " + s.side1 + s.side2 + s.side3 + " = " + s.perimeterTriangle());
     }
@@ -20,7 +20,4 @@ public class PerimeterTriangle {
         return this.side1 + this.side2 + this.side3;
     }
 
-    public static double perimeterTriangle(double a, double b, double c) {
-       return a + b + c;
-    }
 }
