@@ -16,4 +16,26 @@ public class TriangleTests {
     void canCalculatePerimeter() {
         Assertions.assertEquals(9.0, new Triangle(3.0, 3.0, 3.0).trianglePerimeter());
     }
+
+    @Test
+    void cannotCreateNegativeSide(){
+        try {
+            new Triangle(-5.0,5.0,5.0);
+            Assertions.fail("fail: тест упал т.к. он проверяет отрицательные значения, а у вас положительные.");
+        } catch (IllegalArgumentException exception) {
+            System.out.println("Длины сторон треугольника должны быть положительными числами");
+
+        }
+
+    }
+
+    @Test
+    void cannotCreateTriangleInequality(){
+        try{
+            new Triangle(8.0,8.0,4.0);
+            Assertions.fail("fail: тест упал т.к. он проверяет, что сумма двух любых сторон должна быть не меньше третьей стороны, а у нас сумма двух сторон больше третьей.");
+        } catch (IllegalArgumentException exception) {
+            System.out.println("Нарушено равенство треугольника: сумма двух сторон должна быть не меньше третьей стороны.");
+        }
+    }
 }
