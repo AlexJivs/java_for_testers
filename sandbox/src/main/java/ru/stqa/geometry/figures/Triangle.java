@@ -34,9 +34,8 @@ public class Triangle {
         System.out.println("площадь треугольника со сторонами " +  s.side1 + " и " +  s.side2 + " и " +  s.side3  + " = " + s.triangleArea());
     }
     public double triangleArea() {
-        return Math.sqrt(((this.side1 + this.side2 + this.side3) / 2) * ((this.side1 + this.side2 + this.side3) / 2 - this.side1) * ((this.side1 + this.side2 + this.side3) / 2 - this.side2) * ((this.side1 + this.side2 + this.side3) / 2 - this.side3));
+        double p = trianglePerimeter()/2; // полупериметр
+        return Math.sqrt(p * (p - this.side1) * (p - this.side2) * (p - this.side3));    //(((this.side1 + this.side2 + this.side3) / 2) * ((this.side1 + this.side2 + this.side3) / 2 - this.side1) * ((this.side1 + this.side2 + this.side3) / 2 - this.side2) * ((this.side1 + this.side2 + this.side3) / 2 - this.side3));
     }
-
-
 
 }
