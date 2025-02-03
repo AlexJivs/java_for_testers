@@ -32,7 +32,7 @@ public class TriangleTests {
     @Test
     void cannotCreateTriangleInequality(){
         try{
-            new Triangle(8.0,8.0,4.0);
+            new Triangle(1.0,2.0,4.0);
             Assertions.fail("fail: тест упал т.к. он проверяет, что сумма двух любых сторон должна быть не меньше третьей стороны, а у нас сумма двух сторон больше третьей.");
         } catch (IllegalArgumentException exception) {
             System.out.println("Нарушено равенство треугольника: сумма двух сторон должна быть не меньше третьей стороны.");
