@@ -5,10 +5,6 @@ import java.util.Objects;
 
 public record Triangle (double side1, double side2, double side3) {
 
-   // private double side1;
-   // private double side2;
-   // private double side3;
-
         // Проверка наличия отрицательных сторон
     public Triangle {
         if (side1 < 0 || side2 < 0 || side3 < 0) {
@@ -18,9 +14,6 @@ public record Triangle (double side1, double side2, double side3) {
         if (side1 + side2 <= side3 || side1 + side3 <= side2 || side2 + side3 <= side1) {
             throw new IllegalArgumentException("Нарушается неравенство треугольника: сумма двух любых сторон должна быть не меньше третьей стороны.");
         }
-       // this.side1 = side1;
-        //this.side2 = side2;
-        //this.side3 = side3;
     }
 
     @Override
@@ -57,7 +50,7 @@ public record Triangle (double side1, double side2, double side3) {
 
 
     private static void printTrianglePerimeter(Triangle w) {
-        System.out.println("периметр треугольника со сторонами " +  w.side1 + " и " +  w.side2 + " и "  +  w.side3  + " = " + w.trianglePerimeter());
+        System.out.println("Периметр треугольника со сторонами " +  w.side1 + " и " +  w.side2 + " и "  +  w.side3  + " = " + w.trianglePerimeter());
     }
     public double trianglePerimeter() {
         return side1 + side2 + side3;
@@ -67,7 +60,7 @@ public record Triangle (double side1, double side2, double side3) {
 
 
     public static void printTriangleArea(Triangle s) {
-        System.out.println("площадь треугольника со сторонами " +  s.side1 + " и " +  s.side2 + " и " +  s.side3  + " = " + s.triangleArea());
+        System.out.println("Площадь треугольника со сторонами " +  s.side1 + " и " +  s.side2 + " и " +  s.side3  + " = " + s.triangleArea());
     }
     public double triangleArea() {
         double p = trianglePerimeter()/2; // полупериметр

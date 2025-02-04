@@ -43,7 +43,7 @@ public class TriangleTests {
     void testNotEqualityTriangle() {
         var t1 = new Triangle(3.0, 3.0, 1.0);
         var t2 = new Triangle(3.0, 3.0, 2.0);
-        Assertions.assertFalse(t1.equals(t2), "Треугольники должны не равны для этого теста");
+        Assertions.assertFalse(t1.equals(t2), "Треугольники должны не равны для этого теста.");
     }
 
     @Test
