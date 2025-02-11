@@ -1,3 +1,4 @@
+import model.ContactData;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
@@ -9,7 +10,7 @@ public class ContactRemovalTests extends TestContactBase {
             driver.findElement(By.linkText("home")).click();
         }
         if (!isContactPresent()) {
-            createContact("Ivan");
+            createContact(new ContactData("Ivan", "Ivanovich", "Ivanov", "iii", "USA", "222", "@iii"));
         }
         removeContact();
     }

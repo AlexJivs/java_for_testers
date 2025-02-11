@@ -1,3 +1,5 @@
+
+ import model.ContactData;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -8,15 +10,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class TestContactBase {
     protected static WebDriver driver;
 
-    protected static void createContact(String Ivan) {
+    protected static void createContact(ContactData contact) {
         driver.findElement(By.linkText("add new")).click();
-        driver.findElement(By.name("firstname")).sendKeys("Ivan");
-        driver.findElement(By.name("middlename")).sendKeys("Volodja");
-        driver.findElement(By.name("lastname")).sendKeys("Ivanovich");
-        driver.findElement(By.name("nickname")).sendKeys("ivi");
-        driver.findElement(By.name("address")).sendKeys("Moscow");
-        driver.findElement(By.name("home")).sendKeys("2222");
-        driver.findElement(By.name("email")).sendKeys("ivi@gmail.ru");
+        driver.findElement(By.name("firstname")).sendKeys(contact.firstname());
+        driver.findElement(By.name("middlename")).sendKeys(contact.middlename());
+        driver.findElement(By.name("lastname")).sendKeys(contact.lastname());
+        driver.findElement(By.name("nickname")).sendKeys(contact.nickname());
+        driver.findElement(By.name("address")).sendKeys(contact.address());
+        driver.findElement(By.name("home")).sendKeys(contact.home());
+        driver.findElement(By.name("email")).sendKeys(contact.email());
         driver.findElement(By.xpath("(//input[@name=\'submit\'])[2]")).click();
     }
 
