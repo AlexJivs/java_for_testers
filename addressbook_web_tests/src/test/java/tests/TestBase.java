@@ -12,8 +12,8 @@ public class TestBase {
     public void setUp() {
         if (app == null) {
             app = new Applicationmanager();
+            app.init(System.getProperty("browser", "Chrome"));
         }
-        app.init();
     }
 
 }
