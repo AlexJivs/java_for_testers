@@ -28,6 +28,7 @@ public class TestContactBase {
         driver.findElement(By.xpath("//input[@value=\'Delete\']")).click();
     }
 
+
     @BeforeEach
     public void setUp() {
         if (driver == null) {
@@ -59,5 +60,11 @@ public class TestContactBase {
 
     protected boolean isContactPresent() {
         return iselementPresent(By.id("0"));
+    }
+
+    protected void isHome() {
+        if (!iselementPresent(By.linkText("home"))) {
+            driver.findElement(By.linkText("home")).click();
+        }
     }
 }
