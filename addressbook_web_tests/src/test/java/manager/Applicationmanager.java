@@ -9,8 +9,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Applicationmanager {
     protected WebDriver driver;
-    private loginHelper session;
-    private grouphelper groups;
+    private LoginHelper session;
+    private GroupHelper groups;
 
     public void init(String browser) {
         if (driver == null) {
@@ -29,16 +29,16 @@ public class Applicationmanager {
         }
     }
 
-    public loginHelper session() {
+    public LoginHelper session() {
         if (session == null) {
-            session = new loginHelper(this);
+            session = new LoginHelper(this);
         }
         return  session;
     }
 
-    public grouphelper groups() {
+    public GroupHelper groups() {
         if (groups == null) {
-            groups = new grouphelper(this);
+            groups = new GroupHelper(this);
         }
         return  groups;
     }

@@ -3,9 +3,9 @@ package manager;
 import model.Groupdata;
 import org.openqa.selenium.By;
 
-public class grouphelper {
+public class GroupHelper {
     private final Applicationmanager manager;
-    public grouphelper(Applicationmanager manager) {
+    public GroupHelper(Applicationmanager manager) {
         this.manager = manager;
     }
 
