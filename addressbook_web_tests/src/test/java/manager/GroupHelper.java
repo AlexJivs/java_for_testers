@@ -3,40 +3,95 @@ package manager;
 import model.Groupdata;
 import org.openqa.selenium.By;
 
-public class GroupHelper {
-    private final Applicationmanager manager;
+public class GroupHelper extends HelperBase {
+
     public GroupHelper(Applicationmanager manager) {
-        this.manager = manager;
+        super(manager);
     }
 
-    public  void openGroupsPage() {
+    public void openGroupsPage() {
         if (!manager.isElementPresent(By.name("new"))) {
-            manager.driver.findElement(By.linkText("groups")).click();
+            click(By.linkText("groups"));
         }
-    }
-
-    public  boolean isGroupPresent() {
-        openGroupsPage();
-        return manager.isElementPresent(By.name("selected[]"));
     }
 
     public void removeGroup() {
         openGroupsPage();
-        manager.driver.findElement(By.name("selected[]")).click();
-        manager.driver.findElement(By.name("delete")).click();
-        manager.driver.findElement(By.linkText("group page")).click();
+        selectGroup();
+        removeSelectedGroups();
+        returnGroupPage();
     }
 
-    public  void createGroup(Groupdata group) {
+
+    public void createGroup(Groupdata group) {
         openGroupsPage();
-        manager.driver.findElement(By.name("new")).click();
-        manager.driver.findElement(By.name("group_name")).click();
-        manager.driver.findElement(By.name("group_name")).sendKeys(group.name());
-        manager.driver.findElement(By.name("group_header")).click();
-        manager.driver.findElement(By.name("group_header")).sendKeys(group.header());
-        manager.driver.findElement(By.name("group_footer")).click();
-        manager.driver.findElement(By.name("group_footer")).sendKeys(group.footer());
-        manager.driver.findElement(By.name("submit")).click();
-        manager.driver.findElement(By.linkText("group page")).click();
+        initGroupCreation();
+        fillGroupForm(group);
+        submitGroupCreation();
+        returnGroupPage();
+    }
+
+    public void modyfyGroup(Groupdata modifiedGroup) {
+        openGroupsPage();
+        selectGroup();
+        iniGroupModification();
+        fillGroupForm(modifiedGroup);
+        submitGroupModification();
+        returnGroupPage();
+    }
+
+    private void fillGroupForm(Groupdata group) {
+        type(By.name("group_name"), group.name());
+        type(By.name("group_header"), group.header());
+        type(By.name("group_footer"), group.footer());
+    }
+
+
+    private void submitGroupCreation() {
+        click(By.name("submit"));
+    }
+
+    private void initGroupCreation() {
+        click(By.name("new"));
+    }
+
+
+    private void returnGroupPage() {
+        click(By.linkText("group page"));
+    }
+
+    private void submitGroupModification() {
+        click(By.name("update"));
+    }
+
+
+    private void iniGroupModification() {
+        click(By.name("edit"));
+    }
+
+    private void selectGroup() {
+        click(By.name("selected[]"));
+    }
+
+    private void removeSelectedGroups() {
+        click(By.name("delete"));
+    }
+
+    public int getCount() {
+        openGroupsPage();
+       return manager.driver.findElements(By.name("selected[]")).size();
+    }
+
+    public void removeAllgroups() {
+        openGroupsPage();
+        selectAllGroups();
+        removeSelectedGroups();
+    }
+
+    private void selectAllGroups() {
+        var checkboxes = manager.driver.findElements(By.name("selected[]"));
+        for (var checkbox : checkboxes) {
+            checkbox.click();
+        }
     }
 }
