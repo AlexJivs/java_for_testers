@@ -1,53 +1,69 @@
 package tests;
 
-import model.Groupdata;
+import model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class GroupCreationTests extends TestBase{
+import java.util.ArrayList;
+import java.util.List;
+
+public class GroupCreationTests extends TestBase {
 
 
-    @Test
-    public void canCreateGroup() {
-        int groupCount = app.groups().getCount();
-        app.groups().createGroup(new Groupdata("group name", "group header", "group footer"));
-        int newGroupCount = app.groups().getCount();
-        Assertions.assertEquals(groupCount + 1, newGroupCount);
+    public static List<GroupData> groupProvider() {
+        var result = new ArrayList<GroupData>();
+        for (var name : List.of("", "group name")) {
+            for (var header : List.of("", "group header")) {
+                for (var footer : List.of("", "group header")) {
+                    result.add(new GroupData(name, header, footer));
+                }
+            }
+        }
+        for (int i = 0; i < 5; i++) {
+            result.add(new GroupData(randomString(i * 10), randomString(i * 10),randomString(i * 10)));
+        }
+        return result;
     }
 
-    @Test
-    public void canCreateGroupWithEmptyName() {
-        app.groups().createGroup(new Groupdata());
-    }
+    public static List<GroupData> NegativeGroupProvider() {
+        var result = new ArrayList<GroupData>(List.of(
+                new GroupData("group name'","", "")));
 
-    @Test
-    public void canCreateGroupWithNameOnly() {
-        app.groups().createGroup(new Groupdata().withName("some name"));
+        return result;
     }
 
     @Test
     public void canCreateGroupWithHeaderOnly() {
-        app.groups().createGroup(new Groupdata().withHeader("some header"));
+        app.groups().createGroup(new GroupData().withHeader("some header"));
     }
 
     @Test
     public void canCreateGroupWithFooterOnly() {
-        app.groups().createGroup(new Groupdata().withFooter("some footer"));
+        app.groups().createGroup(new GroupData().withFooter("some footer"));
     }
 
-    @Test
-    public void canCreateMultipleGroups() {
-        int n = 5;
+    @ParameterizedTest
+    @MethodSource("groupProvider")
+    public void canCreateMultipleGroups(GroupData group) {
         int groupCount = app.groups().getCount();
-
-        for (int i = 0; i < n; i++) {
-            app.groups().createGroup(new Groupdata(randomString(i), "group header", "group footer"));
-        }
-
-
+        app.groups().createGroup(group);
         int newGroupCount = app.groups().getCount();
-        Assertions.assertEquals(groupCount + n, newGroupCount);
+        Assertions.assertEquals(groupCount + 1, newGroupCount);
+    }
+
+    @ParameterizedTest
+    @MethodSource("NegativeGroupProvider")
+    public void canNotCreateGroup(GroupData group) {
+        int groupCount = app.groups().getCount();
+        app.groups().createGroup(group);
+        int newGroupCount = app.groups().getCount();
+        Assertions.assertEquals(groupCount, newGroupCount);
     }
 
 }
+
+
+
 

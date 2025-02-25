@@ -1,6 +1,6 @@
 package manager;
 
-import model.Groupdata;
+import model.GroupData;
 import org.openqa.selenium.By;
 
 public class GroupHelper extends HelperBase {
@@ -23,7 +23,7 @@ public class GroupHelper extends HelperBase {
     }
 
 
-    public void createGroup(Groupdata group) {
+    public void createGroup(GroupData group) {
         openGroupsPage();
         initGroupCreation();
         fillGroupForm(group);
@@ -31,7 +31,7 @@ public class GroupHelper extends HelperBase {
         returnGroupPage();
     }
 
-    public void modyfyGroup(Groupdata modifiedGroup) {
+    public void modyfyGroup(GroupData modifiedGroup) {
         openGroupsPage();
         selectGroup();
         iniGroupModification();
@@ -40,7 +40,7 @@ public class GroupHelper extends HelperBase {
         returnGroupPage();
     }
 
-    private void fillGroupForm(Groupdata group) {
+    private void fillGroupForm(GroupData group) {
         type(By.name("group_name"), group.name());
         type(By.name("group_header"), group.header());
         type(By.name("group_footer"), group.footer());
