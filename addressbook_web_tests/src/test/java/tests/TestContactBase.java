@@ -9,14 +9,12 @@ public class TestContactBase {
 
     protected static ContactAppManager cntapp;
 
-
      @BeforeEach
     public void setUp() {
         if (cntapp == null) {
             cntapp = new ContactAppManager();
             cntapp.initCnt();
         }
-
     }
     public static String randomStr(int n) {
          var rnd = new Random();
@@ -26,5 +24,4 @@ public class TestContactBase {
          }
         return result;
     }
-
  }

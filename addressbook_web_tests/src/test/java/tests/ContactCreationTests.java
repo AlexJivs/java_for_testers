@@ -33,5 +33,4 @@ public class ContactCreationTests extends TestContactBase {
     public void canCreateMultContacts(ContactData contact) {
         cntapp.contacts().createContact(contact);
     }
-
 }

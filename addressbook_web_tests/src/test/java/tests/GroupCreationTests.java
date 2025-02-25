@@ -10,7 +10,6 @@ import java.util.List;
 
 public class GroupCreationTests extends TestBase {
 
-
     public static List<GroupData> groupProvider() {
         var result = new ArrayList<GroupData>();
         for (var name : List.of("", "group name")) {
@@ -59,7 +58,6 @@ public class GroupCreationTests extends TestBase {
         int newGroupCount = app.groups().getCount();
         Assertions.assertEquals(groupCount, newGroupCount);
     }
-
 }
 
 

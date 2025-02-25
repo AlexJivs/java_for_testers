@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 public class GroupRemovalTests extends TestBase {
 
-
     @Test
     public void canRemoveGroup() {
         if (app.groups().getCount() == 0) {
@@ -17,7 +16,6 @@ public class GroupRemovalTests extends TestBase {
         app.groups().removeGroup();
         int newGroupCount = app.groups().getCount();
         Assertions.assertEquals(groupCount - 1, newGroupCount);
-
     }
 
     @Test

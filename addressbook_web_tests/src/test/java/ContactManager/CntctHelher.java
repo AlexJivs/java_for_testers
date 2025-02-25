@@ -46,5 +46,4 @@ public class CntctHelher {
             manager.driver.findElement(By.name("firstname")).click();
         }
     }
-
 }

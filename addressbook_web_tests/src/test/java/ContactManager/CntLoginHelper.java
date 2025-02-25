@@ -1,6 +1,7 @@
 package ContactManager;
 import org.openqa.selenium.By;
 
+
 public class CntLoginHelper {
     private final ContactAppManager manager;
 

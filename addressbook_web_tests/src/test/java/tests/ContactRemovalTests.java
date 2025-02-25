@@ -1,5 +1,4 @@
 package tests;
-
 import model.ContactData;
 import org.junit.jupiter.api.Test;
 
@@ -13,5 +12,4 @@ public class ContactRemovalTests extends TestContactBase {
         }
         cntapp.contacts().removeContact();
     }
-
 }

@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ContactAppManager {
-
     protected WebDriver driver;
     private CntLoginHelper session;
     private CntctHelher contacts;
