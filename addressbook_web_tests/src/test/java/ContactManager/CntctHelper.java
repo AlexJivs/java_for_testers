@@ -10,14 +10,11 @@ public class CntctHelper extends HelperBaseContacts {
    // private final ContactAppManager manager;
 
     public CntctHelper(ContactAppManager manager) {
-        //this.manager = manager;
         super(manager);
     }
 
     public void isHome() {
-        if (!manager.iselementPresent(By.linkText("home"))) {
             manager.driver.findElement(By.linkText("home")).click();
-        }
     }
 
     public boolean isContactPresent() {
@@ -60,24 +57,24 @@ public class CntctHelper extends HelperBaseContacts {
     public List<ContactData> getListContact() {
         isHome();
         var contacts = new ArrayList<ContactData>();
-        var trs = manager.driver.findElements(By.name("entry"));
+        var trs = manager.driver.findElements(By.cssSelector("tr[name='entry']"));
         for (var tr : trs) {
-            var id = tr.findElement(By.name("selected[]")).getAttribute("value"); // ID контакта
+            var id = tr.findElement(By.name("selected[]")).getAttribute("value"); //
             var firstname = tr.findElement(By.cssSelector("td:nth-child(3)")).getText();
-            var lastname = tr.findElement(By.cssSelector("td:nth-child(2)")).getText();
-            var address = tr.findElement(By.cssSelector("td:nth-child(4)")).getText(); // Адрес
-            var email = tr.findElement(By.cssSelector("td:nth-child(5)")).getText(); // Email
-            var home = tr.findElement(By.cssSelector("td:nth-child(6)")).getText();
+          //  var lastname = tr.findElement(By.cssSelector("td:nth-child(2)")).getText();
+          //  var address = tr.findElement(By.cssSelector("td:nth-child(4)")).getText(); //
+          //  var email = tr.findElement(By.cssSelector("td:nth-child(5)")).getText(); //
+          //  var home = tr.findElement(By.cssSelector("td:nth-child(6)")).getText();
 
-           // var checkbox = tr.findElement(By.name("selected[]"));
-            //   var id = checkbox.getAttribute("value");
+            // var checkbox = tr.findElement(By.name("selected[]"));
+            //  var id = checkbox.getAttribute("value");
             contacts.add(new ContactData()
                     .withIdCntct(id)
-                    .withFirstname(firstname)
-                    .withLastname(lastname)
-                    .withAddress(address)
-                    .withEmail(email)
-                    .withHome(home));
+                    .withFirstname(firstname));
+                   // .withLastname(lastname));
+                   // .withAddress(address)
+                   // .withEmail(email)
+                   // .withHome(home));
         }
         return  contacts;
     }

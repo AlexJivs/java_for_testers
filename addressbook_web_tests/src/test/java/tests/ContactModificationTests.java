@@ -1,7 +1,5 @@
 package tests;
-
 import model.ContactData;
-import model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +8,7 @@ import java.util.Comparator;
 import java.util.Random;
 
 public class ContactModificationTests extends TestContactBase {
-    
+
 
     @Test
     void canModifyContact() {

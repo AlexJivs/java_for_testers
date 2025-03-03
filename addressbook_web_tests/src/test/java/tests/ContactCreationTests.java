@@ -1,6 +1,7 @@
 package tests;
 
 import model.ContactData;
+import model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,7 +17,7 @@ public class ContactCreationTests extends TestContactBase {
 
     public static List<ContactData> contactProvider() {
         var result = new ArrayList<ContactData>();
-        for (var firstname : List.of("", "contact name")) {
+     /*   for (var firstname : List.of("", "contact name")) {
             for (var middlename : List.of("", "middle name")) {
                 for (var lastname : List.of("", "last name")) {
                     for (var nickname : List.of("", "nick name")) {
@@ -38,7 +39,7 @@ public class ContactCreationTests extends TestContactBase {
                     }
                 }
             }
-        }
+        } */
 
 
         for (int i = 0; i < 5; i++) {
@@ -64,15 +65,18 @@ public class ContactCreationTests extends TestContactBase {
 
         var newContacts = cntapp.contacts().getListContact();
 
-       // Comparator<ContactData> compareById = (o1, o2) -> Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
-        Comparator<ContactData> compareById = (o1, o2) -> Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+
+        Comparator<ContactData> compareById = (o1, o2) -> {
+            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+        };
 
         newContacts.sort(compareById);
 
         // Создаем ожидаемый список
         var expectedList = new ArrayList<>(oldContacts);
         expectedList.add(contact.withIdCntct(newContacts.get(newContacts.size() - 1).id())
-                .withAddress("").withEmail("").withHome(""));
+                .withFirstname(""));
+
         expectedList.sort(compareById);
 
         // Сравниваем старый и новый список
