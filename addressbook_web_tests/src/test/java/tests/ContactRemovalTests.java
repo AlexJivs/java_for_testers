@@ -8,7 +8,7 @@ public class ContactRemovalTests extends TestContactBase {
     public void deleteContact() {
         cntapp.contacts().isHome();
         if (!cntapp.contacts().isContactPresent()) {
-            cntapp.contacts().createContact(new ContactData("Ivan", "Ivanovich", "Ivanov", "iii", "USA", "222", "@iii"));
+            cntapp.contacts().createContact(new ContactData("","Ivan", "Ivanovich", "Ivanov", "iii", "USA", "222", "@iii"));
         }
         cntapp.contacts().removeContact();
     }

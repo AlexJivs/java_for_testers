@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class ContactAppManager {
     protected WebDriver driver;
     private CntLoginHelper session;
-    private CntctHelher contacts;
+    private CntctHelper contacts;
 
     public void initCnt() {
         if (driver == null) {
@@ -28,9 +28,9 @@ public class ContactAppManager {
         return session;
     }
 
-    public CntctHelher contacts() {
+    public CntctHelper contacts() {
         if (contacts == null) {
-            contacts = new CntctHelher(this);
+            contacts = new CntctHelper(this);
         }
         return contacts;
     }
