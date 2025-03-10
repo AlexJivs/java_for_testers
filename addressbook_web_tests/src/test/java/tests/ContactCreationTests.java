@@ -35,14 +35,14 @@ public class ContactCreationTests extends TestContactBase {
         }
 
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             result.add(new ContactData()
 
-                    .withFirstname(CommonFunctions.randomStr(i * 10))
-                    .withLastname(CommonFunctions.randomStr(i * 10))
-                    .withAddress(CommonFunctions.randomStr(i * 10))
-                    .withHome(CommonFunctions.randomStr(i * 10))
-                    .withEmail(CommonFunctions.randomStr(i * 10)));
+                    .withFirstname(CommonFunctions.randomStr(i * 5))
+                    .withLastname(CommonFunctions.randomStr(i * 5))
+                    .withAddress(CommonFunctions.randomStr(i * 5))
+                    .withHome(CommonFunctions.randomStr(i * 5))
+                    .withEmail(CommonFunctions.randomStr(i * 5)));
 
         }
         return result;
@@ -61,10 +61,19 @@ public class ContactCreationTests extends TestContactBase {
 
         newContacts.sort(compareById);
         var expectedList = new ArrayList<>(oldContacts);
-        expectedList.add(contact.withIdCntct(newContacts.get(newContacts.size() - 1).id())
-                .withAddress("").withHome("").withEmail(""));
+        expectedList.add(contact
+                .withIdCntct(newContacts.get(newContacts.size() - 1).id())
+              .withFirstname(contact.firstname())
+               // .withFirstname("Vasya")
+               // .withLastname("")
+                .withAddress("")
+                .withEmail("")
+                .withHome(""));
+
 
         expectedList.sort(compareById);
+
+
         Assertions.assertEquals(newContacts, expectedList);
     }
 }

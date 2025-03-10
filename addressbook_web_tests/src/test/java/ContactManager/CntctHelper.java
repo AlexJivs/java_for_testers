@@ -26,9 +26,9 @@ public class CntctHelper extends HelperBaseContacts {
         ifAddNewNotExist();
         manager.driver.findElement(By.linkText("add new")).click();
         type(By.name("firstname"), contact.firstname());
-        type(By.name("middlename"), contact.middlename());
+       // type(By.name("middlename"), contact.middlename());
         type(By.name("lastname"), contact.lastname());
-        type(By.name("nickname"), contact.nickname());
+      // type(By.name("nickname"), contact.nickname());
         type(By.name("address"), contact.address());
         type(By.name("home"), contact.home());
         type(By.name("email"), contact.email());
@@ -64,25 +64,12 @@ public class CntctHelper extends HelperBaseContacts {
         var contacts = new ArrayList<ContactData>();
         var trs = manager.driver.findElements(By.cssSelector("tr[name='entry']"));
         for (var tr : trs) {
+            //var firstname = tr.getText();
+            var firstname = tr.findElement(By.cssSelector("td:nth-child(3)")).getText();
+            var lastname = tr.findElement(By.cssSelector("td:nth-child(2)")).getText();
             var checkbox = tr.findElement(By.name("selected[]"));
             var id = checkbox.getAttribute("value");
-            contacts.add(new ContactData().withIdCntct(id).withAddress("").withHome("").withEmail("").withFirstname("").withLastname("").withNickname("").withMiddlename(""));
-            //var id = tr.findElement(By.name("selected[]")).getAttribute("value"); //
-            // var firstname = tr.findElement(By.cssSelector("td:nth-child(3)")).getText();
-          //  var lastname = tr.findElement(By.cssSelector("td:nth-child(2)")).getText();
-          //  var address = tr.findElement(By.cssSelector("td:nth-child(4)")).getText(); //
-          //  var email = tr.findElement(By.cssSelector("td:nth-child(5)")).getText(); //
-          //  var home = tr.findElement(By.cssSelector("td:nth-child(6)")).getText();
-
-            // var checkbox = tr.findElement(By.name("selected[]"));
-            //  var id = checkbox.getAttribute("value");
-           // contacts.add(new ContactData()
-                  //  .withIdCntct(id)
-                //    .withFirstname(firstname));
-                   // .withLastname(lastname));
-                   // .withAddress(address)
-                   // .withEmail(email)
-                   // .withHome(home));
+            contacts.add(new ContactData().withIdCntct(id).withFirstname(firstname).withLastname(lastname));
         }
         return  contacts;
     }
@@ -110,9 +97,9 @@ public class CntctHelper extends HelperBaseContacts {
     private void fillContactForm(ContactData contact) {
         type(By.name("lastname"), contact.lastname());
         type(By.name("firstname"), contact.firstname());
-       // type(By.name("address"), contact.address());
-       // type(By.name("email"), contact.email());
-       // type(By.name("phone"), contact.mobile());
+        type(By.name("address"), contact.address());
+        type(By.name("email"), contact.email());
+        type(By.name("home"), contact.home());
 
     }
 
