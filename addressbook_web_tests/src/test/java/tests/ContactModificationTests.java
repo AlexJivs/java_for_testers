@@ -33,7 +33,7 @@ public class ContactModificationTests extends TestContactBase {
         var expectedList = new ArrayList<>(oldContacts);
         expectedList.set(index, testData.withIdCntct(oldContacts.get(index).id()));
         Comparator<ContactData> compareById = Comparator.comparingInt(o -> Integer.parseInt(o.id()));
-       
+
         newContacts.sort(compareById);
         expectedList.sort(compareById);
         Assertions.assertEquals(newContacts, expectedList);

@@ -24,4 +24,14 @@ public class ContactRemovalTests extends TestContactBase {
         Assertions.assertEquals(newContacts, expectedList);
 
     }
+
+    @Test
+    public void canDeleteAllContacts() {
+        cntapp.contacts().isHome();
+        if (cntapp.contacts().getCount() == 0) {
+            cntapp.contacts().createContact(new ContactData());
+        }
+        cntapp.contacts().removeAllContact();
+        Assertions.assertEquals(0, cntapp.contacts().getCount());
+    }
 }

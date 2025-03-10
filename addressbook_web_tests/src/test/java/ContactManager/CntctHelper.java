@@ -35,7 +35,7 @@ public class CntctHelper extends HelperBaseContacts {
         manager.driver.findElement(By.xpath("(//input[@name=\'submit\'])[2]")).click();
     }
 
-    public void removeContact() {
+    public void removeAllContact() {
         ifAddNewNotExist();
         manager.driver.findElement(By.linkText("home")).click();
         manager.driver.findElement(By.xpath("//input[@id=\'MassCB\']")).click();
@@ -64,8 +64,11 @@ public class CntctHelper extends HelperBaseContacts {
         var contacts = new ArrayList<ContactData>();
         var trs = manager.driver.findElements(By.cssSelector("tr[name='entry']"));
         for (var tr : trs) {
-            var id = tr.findElement(By.name("selected[]")).getAttribute("value"); //
-            var firstname = tr.findElement(By.cssSelector("td:nth-child(3)")).getText();
+            var checkbox = tr.findElement(By.name("selected[]"));
+            var id = checkbox.getAttribute("value");
+            contacts.add(new ContactData().withIdCntct(id).withAddress("").withHome("").withEmail("").withFirstname("").withLastname("").withNickname("").withMiddlename(""));
+            //var id = tr.findElement(By.name("selected[]")).getAttribute("value"); //
+            // var firstname = tr.findElement(By.cssSelector("td:nth-child(3)")).getText();
           //  var lastname = tr.findElement(By.cssSelector("td:nth-child(2)")).getText();
           //  var address = tr.findElement(By.cssSelector("td:nth-child(4)")).getText(); //
           //  var email = tr.findElement(By.cssSelector("td:nth-child(5)")).getText(); //
@@ -73,9 +76,9 @@ public class CntctHelper extends HelperBaseContacts {
 
             // var checkbox = tr.findElement(By.name("selected[]"));
             //  var id = checkbox.getAttribute("value");
-            contacts.add(new ContactData()
-                    .withIdCntct(id)
-                    .withFirstname(firstname));
+           // contacts.add(new ContactData()
+                  //  .withIdCntct(id)
+                //    .withFirstname(firstname));
                    // .withLastname(lastname));
                    // .withAddress(address)
                    // .withEmail(email)
