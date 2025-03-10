@@ -9,7 +9,6 @@ public class TestBase {
 
     protected static Applicationmanager app;
 
-
     @BeforeEach
     public void setUp() {
         if (app == null) {
@@ -17,7 +16,6 @@ public class TestBase {
             app.init(System.getProperty("browser", "Chrome"));
         }
     }
-
     public static  String randomString(int n) {
         var rnd = new Random();
         var result = "";

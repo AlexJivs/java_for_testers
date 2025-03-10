@@ -1,5 +1,4 @@
 package tests;
-
 import model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,6 @@ public class GroupModificationTests extends  TestBase{
     void canModifyGroup() {
         if (app.groups().getCount() == 0) {
             app.groups().createGroup(new GroupData("", "", "", ""));
-
         }
         var oldGroups = app.groups().getList();
         var rnd = new Random();

@@ -42,6 +42,11 @@ public class CntctHelper extends HelperBaseContacts {
         manager.driver.findElement(By.xpath("//input[@value=\'Delete\']")).click();
     }
 
+    public void deleteContact(ContactData contact) {
+        selectContact(contact);
+        click(By.xpath("//input[@value=\'Delete\']"));
+    }
+
     public void ifAddNewNotExist() {
         if (!manager.iselementPresent(By.linkText("add new"))) {
             manager.driver.findElement(By.name("firstname")).click();
