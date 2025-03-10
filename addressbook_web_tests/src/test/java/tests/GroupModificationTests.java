@@ -24,7 +24,8 @@ public class GroupModificationTests extends  TestBase{
         expectedList.set(index, testData.withId(oldGroups.get(index).id()));
         Comparator<GroupData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
-        }; newGroups.sort(compareById);
+        };
+        newGroups.sort(compareById);
         expectedList.sort(compareById);
         Assertions.assertEquals(newGroups, expectedList);
     }
