@@ -55,6 +55,7 @@ public class GroupCreationTests extends TestBase {
         Comparator<GroupData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };
+
         newGroups.sort(compareById);
         var expectedList = new ArrayList<>(oldGroups);
         expectedList.add(group.withId(newGroups.get(newGroups.size() - 1).id()).withHeader("").withFooter(""));

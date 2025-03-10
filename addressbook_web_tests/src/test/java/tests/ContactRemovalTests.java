@@ -14,7 +14,6 @@ public class ContactRemovalTests extends TestContactBase {
         if (!cntapp.contacts().isContactPresent()) {
             cntapp.contacts().createContact(new ContactData ()); //("","Ivan", "Ivanovich", "Ivanov", "iii", "USA", "222", "@iii"));
         }
-
         var oldContacts = cntapp.contacts().getListContact();
         var rnd = new Random();
         var index = rnd.nextInt(oldContacts.size());
