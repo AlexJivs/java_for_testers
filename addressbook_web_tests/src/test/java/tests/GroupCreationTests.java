@@ -62,6 +62,7 @@ public class GroupCreationTests extends TestBase {
         expectedList.sort(compareById);
         Assertions.assertEquals(newGroups, expectedList);
     }
+
     @ParameterizedTest
     @MethodSource("NegativeGroupProvider")
     public void canNotCreateGroup(GroupData group) {
