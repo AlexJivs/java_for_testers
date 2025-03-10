@@ -10,36 +10,7 @@ import java.util.Random;
 
 public class ContactModificationTests extends TestContactBase {
 
-/*
-    @Test
-    void canModifyContact() {
-        cntapp.contacts().isHome();
-        if (cntapp.contacts().getCount() == 0) {
-            cntapp.contacts().createContact(new ContactData()); //"","FirstName", "MiddleName", "LastName", "","Address", "890", "email"));
 
-        }
-        var oldContacts = cntapp.contacts().getListContact();
-
-        if (oldContacts.isEmpty()) {
-            throw new IllegalStateException("Список контактов пуст. Невозможно модифицировать контакт.");
-        }
-
-        var rnd = new Random();
-        var index = rnd.nextInt(oldContacts.size());
-
-        var testData = new ContactData().withFirstname("modified firstname"); //.withLastname("Modified lastname");
-        cntapp.contacts().modifyContact(oldContacts.get(index), testData);
-
-        var newContacts = cntapp.contacts().getListContact();
-        var expectedList = new ArrayList<>(oldContacts);
-        expectedList.set(index, testData.withIdCntct(oldContacts.get(index).id()));
-        Comparator<ContactData> compareById = Comparator.comparingInt(o -> Integer.parseInt(o.id()));
-
-        newContacts.sort(compareById);
-        expectedList.sort(compareById);
-        Assertions.assertEquals(newContacts, expectedList);
-    }
-} */
 @Test
 void canModifyContact() {
     cntapp.contacts().isHome();

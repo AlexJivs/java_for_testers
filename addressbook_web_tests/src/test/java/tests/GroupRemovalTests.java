@@ -23,7 +23,7 @@ public class GroupRemovalTests extends TestBase {
         expectedList.remove(index);
         Assertions.assertEquals(newGroups, expectedList);
     }
-    
+
     @Test
     void canRemoveAllGroupsAtOnce() {
         if (app.groups().getCount() == 0) {
