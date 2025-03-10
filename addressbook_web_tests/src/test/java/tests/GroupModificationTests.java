@@ -14,6 +14,7 @@ public class GroupModificationTests extends  TestBase{
         if (app.groups().getCount() == 0) {
             app.groups().createGroup(new GroupData("", "", "", ""));
         }
+
         var oldGroups = app.groups().getList();
         var rnd = new Random();
         var index = rnd.nextInt(oldGroups.size());
