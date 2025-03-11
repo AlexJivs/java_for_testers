@@ -25,13 +25,7 @@ public class CntctHelper extends HelperBaseContacts {
     public void createContact(ContactData contact) {
         ifAddNewNotExist();
         manager.driver.findElement(By.linkText("add new")).click();
-        type(By.name("firstname"), contact.firstname());
-       // type(By.name("middlename"), contact.middlename());
-        type(By.name("lastname"), contact.lastname());
-      // type(By.name("nickname"), contact.nickname());
-        type(By.name("address"), contact.address());
-        type(By.name("home"), contact.home());
-        type(By.name("email"), contact.email());
+        fillContactForm(contact);
         manager.driver.findElement(By.xpath("(//input[@name=\'submit\'])[2]")).click();
     }
 
@@ -100,8 +94,10 @@ public class CntctHelper extends HelperBaseContacts {
         type(By.name("address"), contact.address());
         type(By.name("email"), contact.email());
         type(By.name("home"), contact.home());
-
+        attach(By.name("photo"), contact.photo());
     }
+
+
 
     private void submitContactModification() {
         click(By.name("update"));

@@ -31,7 +31,7 @@ void canModifyContact() {
     expectedList.set(index, testData.withIdCntct(oldContacts.get(index).id()));
 
     Comparator<ContactData> compareById = Comparator.comparingInt(o -> Integer.parseInt(o.id()));
-    
+
 
     //Comparator<ContactData> compareById = Comparator.comparingInt(o -> Integer.parseInt(o.id()));
     //(o1, o2) -> {

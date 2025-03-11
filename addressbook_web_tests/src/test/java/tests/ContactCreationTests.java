@@ -3,10 +3,12 @@ package tests;
 import common.CommonFunctions;
 import model.ContactData;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -42,7 +44,9 @@ public class ContactCreationTests extends TestContactBase {
                     .withLastname(CommonFunctions.randomStr(i * 5))
                     .withAddress(CommonFunctions.randomStr(i * 5))
                     .withHome(CommonFunctions.randomStr(i * 5))
-                    .withEmail(CommonFunctions.randomStr(i * 5)));
+                    .withEmail(CommonFunctions.randomStr(i * 5))
+                    .withPhoto("src/test/resources/images/avatar.png"));
+
 
         }
         return result;
@@ -70,9 +74,24 @@ public class ContactCreationTests extends TestContactBase {
 
 
         expectedList.sort(compareById);
-
-
         Assertions.assertEquals(newContacts, expectedList);
+
+
+    }
+
+    @Test
+    void  canCreateContact() {
+        var contact = new ContactData()
+                .withFirstname(CommonFunctions.randomStr(5))
+                .withLastname(CommonFunctions.randomStr(5))
+                .withAddress(CommonFunctions.randomStr(5))
+                .withHome(CommonFunctions.randomStr(5))
+                .withEmail(CommonFunctions.randomStr(5))
+                .withPhoto("src/test/resources/images/ava.png");
+        cntapp.contacts().createContact(contact);
+
+
+
     }
 }
 
