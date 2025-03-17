@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CntctHelper extends LoginHelper.HelperBaseContacts {
-   
+
     public CntctHelper(Applicationmanager manager) {
         super(manager);
     }

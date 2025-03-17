@@ -1,0 +1,25 @@
+[ {
+  "id" : "",
+  "firstname" : "",
+  "lastname" : "",
+  "address" : "",
+  "home" : "",
+  "email" : "",
+  "photo" : "src/test/resources/images/avatar.png"
+}, {
+  "id" : "",
+  "firstname" : "ghzla",
+  "lastname" : "llojb",
+  "address" : "bnlvg",
+  "home" : "tgdan",
+  "email" : "sdpms",
+  "photo" : "src/test/resources/images/avatar.png"
+}, {
+  "id" : "",
+  "firstname" : "ytuniqgfoe",
+  "lastname" : "pswwlxjwzc",
+  "address" : "onlsywuuhs",
+  "home" : "rgcqidzedi",
+  "email" : "flofqfqzit",
+  "photo" : "src/test/resources/images/avatar.png"
+} ]
