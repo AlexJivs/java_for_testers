@@ -14,7 +14,7 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class ContactCreationTests extends TestContactBase {
+public class ContactCreationTests extends TestBase {
 
     public static List<ContactData> contactProvider() {
         var result = new ArrayList<ContactData>();
@@ -54,10 +54,10 @@ public class ContactCreationTests extends TestContactBase {
     @ParameterizedTest
     @MethodSource("contactProvider")
     public void canCreateMultContacts(ContactData contact) {
-        var oldContacts = cntapp.contacts().getListContact();
-        cntapp.contacts().createContact(contact);
+        var oldContacts = app.contacts().getListContact();
+        app.contacts().createContact(contact);
 
-        var newContacts = cntapp.contacts().getListContact();
+        var newContacts = app.contacts().getListContact();
         Comparator<ContactData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };
@@ -88,7 +88,7 @@ public class ContactCreationTests extends TestContactBase {
                 .withHome(CommonFunctions.randomStr(5))
                 .withEmail(CommonFunctions.randomStr(5))
                 .withPhoto("src/test/resources/images/ava.png");
-        cntapp.contacts().createContact(contact);
+        app.contacts().createContact(contact);
 
 
 

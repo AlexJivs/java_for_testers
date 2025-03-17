@@ -11,6 +11,8 @@ public class Applicationmanager {
     protected WebDriver driver;
     private LoginHelper session;
     private GroupHelper groups;
+    private CntctHelper contacts;
+   // private CntLoginHelper session;
 
     public void init(String browser) {
         if (driver == null) {
@@ -41,6 +43,13 @@ public class Applicationmanager {
             groups = new GroupHelper(this);
         }
         return  groups;
+    }
+
+    public CntctHelper contacts() {
+        if (contacts == null) {
+            contacts = new CntctHelper(this);
+        }
+        return contacts;
     }
 
     protected boolean isElementPresent(By locator) {

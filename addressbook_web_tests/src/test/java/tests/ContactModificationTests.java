@@ -8,25 +8,25 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
 
-public class ContactModificationTests extends TestContactBase {
+public class ContactModificationTests extends TestBase {
 
 
 @Test
 void canModifyContact() {
-    cntapp.contacts().isHome();
-    if (cntapp.contacts().getCount() == 0) {
-        cntapp.contacts().createContact(new ContactData()); //"","FirstName", "MiddleName", "LastName", "","Address", "890", "email"));
+    app.contacts().isHome();
+    if (app.contacts().getCount() == 0) {
+        app.contacts().createContact(new ContactData()); //"","FirstName", "MiddleName", "LastName", "","Address", "890", "email"));
 
     }
-    var oldContacts = cntapp.contacts().getListContact();
+    var oldContacts = app.contacts().getListContact();
 
     var rnd = new Random();
     var index = rnd.nextInt(oldContacts.size());
 
     var testData = new ContactData().withFirstname("modified firstname"); //.withLastname("Modified lastname");
-    cntapp.contacts().modifyContact(oldContacts.get(index), testData);
+    app.contacts().modifyContact(oldContacts.get(index), testData);
 
-    var newContacts = cntapp.contacts().getListContact();
+    var newContacts = app.contacts().getListContact();
     var expectedList = new ArrayList<>(oldContacts);
     expectedList.set(index, testData.withIdCntct(oldContacts.get(index).id()));
 

@@ -1,4 +1,4 @@
-package ContactManager;
+package manager;
 
 import model.ContactData;
 import org.openqa.selenium.By;
@@ -6,10 +6,10 @@ import org.openqa.selenium.By;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CntctHelper extends HelperBaseContacts {
+public class CntctHelper extends LoginHelper.HelperBaseContacts {
    // private final ContactAppManager manager;
 
-    public CntctHelper(ContactAppManager manager) {
+    public CntctHelper(Applicationmanager manager) {
         super(manager);
     }
 
@@ -19,7 +19,7 @@ public class CntctHelper extends HelperBaseContacts {
 
     public boolean isContactPresent() {
         ifAddNewNotExist();
-        return manager.iselementPresent(By.id("0"));
+        return manager.isElementPresent(By.id("0"));
     }
 
     public void createContact(ContactData contact) {
@@ -42,7 +42,7 @@ public class CntctHelper extends HelperBaseContacts {
     }
 
     public void ifAddNewNotExist() {
-        if (!manager.iselementPresent(By.linkText("add new"))) {
+        if (!manager.isElementPresent(By.linkText("add new"))) {
             manager.driver.findElement(By.name("firstname")).click();
         }
     }
