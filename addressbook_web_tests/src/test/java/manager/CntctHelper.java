@@ -25,6 +25,17 @@ public class CntctHelper extends LoginHelper.HelperBaseContacts {
     public void createContact(ContactData contact) {
         ifAddNewNotExist();
         manager.driver.findElement(By.linkText("add new")).click();
+        type(By.name("lastname"), contact.lastname());
+        type(By.name("firstname"), contact.firstname());
+        type(By.name("address"), contact.address());
+        type(By.name("email"), contact.email());
+        type(By.name("home"), contact.home());
+        manager.driver.findElement(By.xpath("(//input[@name=\'submit\'])[2]")).click();
+    }
+
+    public void createContactWithPhoto(ContactData contact) {
+        ifAddNewNotExist();
+        manager.driver.findElement(By.linkText("add new")).click();
         fillContactForm(contact);
         manager.driver.findElement(By.xpath("(//input[@name=\'submit\'])[2]")).click();
     }

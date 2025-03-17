@@ -73,6 +73,8 @@ public class ContactCreationTests extends TestBase {
                 .withHome(""));
 
 
+
+
         expectedList.sort(compareById);
         Assertions.assertEquals(newContacts, expectedList);
 
@@ -88,7 +90,7 @@ public class ContactCreationTests extends TestBase {
                 .withHome(CommonFunctions.randomStr(5))
                 .withEmail(CommonFunctions.randomStr(5))
                 .withPhoto("src/test/resources/images/ava.png");
-        app.contacts().createContact(contact);
+        app.contacts().createContactWithPhoto(contact);
 
 
 
