@@ -97,7 +97,6 @@ public class GroupHelper extends HelperBase {
             checkbox.click();
         }
     }
-
     public List<GroupData> getList() {
         openGroupsPage();
         var groups = new ArrayList<GroupData>();

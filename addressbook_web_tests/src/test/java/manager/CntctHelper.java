@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CntctHelper extends LoginHelper.HelperBaseContacts {
-   // private final ContactAppManager manager;
-
+   
     public CntctHelper(Applicationmanager manager) {
         super(manager);
     }
@@ -83,7 +82,11 @@ public class CntctHelper extends LoginHelper.HelperBaseContacts {
         isHome();
        selectContact(contact);
        initContactModification(contact);
-       fillContactForm(modifiedContact);
+       type(By.name("lastname"), contact.lastname());
+       type(By.name("firstname"), contact.firstname());
+       type(By.name("address"), contact.address());
+       type(By.name("email"), contact.email());
+       type(By.name("home"), contact.home());
        submitContactModification();
        isHome();;
     }

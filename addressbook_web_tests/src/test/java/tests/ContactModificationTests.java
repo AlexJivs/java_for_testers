@@ -10,20 +10,15 @@ import java.util.Random;
 
 public class ContactModificationTests extends TestBase {
 
-
 @Test
 void canModifyContact() {
-    app.contacts().isHome();
     if (app.contacts().getCount() == 0) {
-        app.contacts().createContact(new ContactData()); //"","FirstName", "MiddleName", "LastName", "","Address", "890", "email"));
-
+        app.contacts().createContact(new ContactData("", "FirstName", "LastName", "Address", "1234567890", "contact email", ""));
     }
     var oldContacts = app.contacts().getListContact();
-
     var rnd = new Random();
     var index = rnd.nextInt(oldContacts.size());
-
-    var testData = new ContactData().withFirstname("modified firstname"); //.withLastname("Modified lastname");
+    var testData = new ContactData().withFirstname("FirstName").withLastname("LastName");
     app.contacts().modifyContact(oldContacts.get(index), testData);
 
     var newContacts = app.contacts().getListContact();
@@ -31,14 +26,10 @@ void canModifyContact() {
     expectedList.set(index, testData.withIdCntct(oldContacts.get(index).id()));
 
     Comparator<ContactData> compareById = Comparator.comparingInt(o -> Integer.parseInt(o.id()));
-
-
-    //Comparator<ContactData> compareById = Comparator.comparingInt(o -> Integer.parseInt(o.id()));
-    //(o1, o2) -> {
-    //   return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
     newContacts.sort(compareById);
     expectedList.sort(compareById);
-    Assertions.assertEquals(newContacts, expectedList);
+
+    Assertions.assertEquals(expectedList, newContacts);;
 }
 }
 
