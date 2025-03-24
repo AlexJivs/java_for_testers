@@ -82,11 +82,16 @@ public class CntctHelper extends LoginHelper.HelperBaseContacts {
         isHome();
        selectContact(contact);
        initContactModification(contact);
-       type(By.name("lastname"), contact.lastname());
-       type(By.name("firstname"), contact.firstname());
-       type(By.name("address"), contact.address());
-       type(By.name("email"), contact.email());
-       type(By.name("home"), contact.home());
+       type(By.name("lastname"), modifiedContact.lastname());
+       type(By.name("firstname"), modifiedContact.firstname());
+       type(By.name("address"), modifiedContact.address());
+       type(By.name("email"), modifiedContact.email());
+       type(By.name("home"), modifiedContact.home());
+     //  type(By.name("lastname"), contact.lastname());
+    //  type(By.name("firstname"), contact.firstname());
+   //  type(By.name("address"), contact.address());
+    // type(By.name("email"), contact.email());
+    //  type(By.name("home"), contact.home());
        submitContactModification();
        isHome();;
     }
